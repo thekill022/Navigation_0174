@@ -59,6 +59,62 @@ class _LoginPageState extends State<LoginPage> {
                         );
                       },
                     ),
+                    SizedBox(height: 40),
+
+                    const Text(
+                      'Welcome Back',
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                        fontSize: 32,
+                        fontWeight: FontWeight.w800,
+                        color: MainLayout.textTitleColor,
+                        letterSpacing: -0.5,
+                      ),
+                    ),
+                    SizedBox(height: 8),
+                    Text(
+                      "Sign in to your account to continue",
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: MainLayout.textSubtitleColor,
+                      ),
+                    ),
+                    SizedBox(height: 48),
+
+                    TextFormField(
+                      controller: emailController,
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: InputDecoration(
+                        labelText: 'Email Address',
+                        labelStyle: TextStyle(color: MainLayout.labelColor),
+                        prefixIcon: Icon(
+                          Icons.email_outlined,
+                          color: MainLayout.primaryColor,
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(16),
+                          borderSide: BorderSide(
+                            color: MainLayout.inputBorderColor,
+                          ),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(16),
+                          borderSide: BorderSide(
+                            color: MainLayout.primaryColor,
+                            width: 2,
+                          ),
+                        ),
+                        filled: true,
+                        fillColor: MainLayout.inputFillColor,
+                      ),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter your email';
+                        }
+                        return null;
+                      },
+                    ),
                   ],
                 ),
               ),
