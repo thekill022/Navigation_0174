@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class DetailOrderPage extends StatefulWidget {
+class DetailOrderPage extends StatelessWidget {
   final String makanan;
   final String minuman;
   final String jumlahMakanan;
@@ -16,11 +16,6 @@ class DetailOrderPage extends StatefulWidget {
     super.key,
   });
 
-  @override
-  State<DetailOrderPage> createState() => _DetailOrderPageState();
-}
-
-class _DetailOrderPageState extends State<DetailOrderPage> {
   @override
   Widget build(BuildContext context) {
     return const Placeholder();
