@@ -15,6 +15,24 @@ class _OrderPageState extends State<OrderPage> {
   int totalHarga = 0;
   final _formKey = GlobalKey<FormState>();
 
+  void calculateTotalPrice() {
+    int jumlahMakanan = int.tryParse(jumlahMakananController.text) ?? 0;
+    int jumlahMinuman = int.tryParse(jumlahMinumanController.text) ?? 0;
+
+    setState(() {
+      totalHarga = (jumlahMakanan * 32000) + (jumlahMinuman * 5000);
+    });
+  }
+
+  @override
+  void dispose() {
+    makananController.dispose();
+    minumanController.dispose();
+    jumlahMakananController.dispose();
+    jumlahMinumanController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return const Placeholder();
