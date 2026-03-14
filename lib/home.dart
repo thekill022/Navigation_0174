@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:navigation_0174/mainlayout.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  final Map<String, dynamic>? recentOrder;
+  const HomePage({super.key, this.recentOrder});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -255,6 +256,112 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
+                SizedBox(height: 32),
+
+                if (widget.recentOrder != null) ...[
+                  Text(
+                    'Recent Activity',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: MainLayout.textTitleColor,
+                    ),
+                  ),
+                  SizedBox(height: 16),
+
+                  Container(
+                    padding: EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(16),
+                      border: Border.all(color: MainLayout.inputBorderColor),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.03),
+                          blurRadius: 10,
+                          offset: Offset(0, 4),
+                        ),
+                      ],
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.check_circle_rounded,
+                              color: Colors.green,
+                            ),
+
+                            SizedBox(width: 8),
+                            Text(
+                              "Order Successful",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                                color: Colors.green,
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 12),
+
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "Food: \n${widget.recentOrder!['makanan']}",
+                              style: TextStyle(
+                                color: MainLayout.textSubtitleColor,
+                              ),
+                            ),
+                            Text(
+                              "x${widget.recentOrder!['jumlahMakanan']}",
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 12),
+
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "Drink: \n${widget.recentOrder!['minuman']}",
+                              style: TextStyle(
+                                color: MainLayout.textSubtitleColor,
+                              ),
+                            ),
+                            Text(
+                              "x${widget.recentOrder!['jumlahMinuman']}",
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 12),
+                        Divider(),
+                        SizedBox(height: 8),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "Total Paid",
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            Text(
+                              'Rp ${widget.recentOrder!['totalHarga']}',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: MainLayout.primaryColor,
+                                fontSize: 16,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ],
             ),
           ),
