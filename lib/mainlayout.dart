@@ -27,6 +27,27 @@ class MainLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      backgroundColor: backgroundColor,
+      appBar:
+          showAppBar
+              ? AppBar(
+                title: Text(
+                  title,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 1.2,
+                  ),
+                ),
+                centerTitle: true,
+                actions: actions,
+                backgroundColor: primaryColor,
+                foregroundColor: Colors.white,
+                elevation: 4,
+                shadowColor: Colors.black26,
+              )
+              : null,
+      body: SafeArea(child: child),
+    );
   }
 }
